@@ -1,0 +1,8 @@
+{
+  "name": "Digital OMR Sheet",
+  "description": "A modern, fully responsive React application for generating digital OMR sheets with a dark glassmorphism theme.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
