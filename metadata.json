@@ -1,6 +1,6 @@
 {
-  "name": "Digital OMR Sheet",
-  "description": "A modern, fully responsive React application for generating digital OMR sheets with a dark glassmorphism theme.",
+  "name": "Mutu OMR",
+  "description": "A modern, fully responsive React Progressive Web App for generating digital OMR sheets with a premium Royal Mahogany theme.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
