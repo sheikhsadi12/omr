@@ -3,17 +3,37 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState, useEffect } from 'react';
 import { OMRGenerator } from './components/OMRGenerator';
 
 export default function App() {
-  return (
-    <div className="min-h-screen bg-[#3d0c02] bg-[radial-gradient(ellipse_at_top,_#4E070C,_#3d0c02_80%)] text-amber-50 font-sans flex flex-col items-center justify-center relative p-4 md:p-8 selection:bg-amber-500/30">
-      {/* Background Decor */}
-      <div className="fixed top-[-10%] left-[-10%] w-[60%] md:w-[40%] h-[40%] bg-amber-600/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none"></div>
-      <div className="fixed bottom-[-10%] right-[-10%] w-[60%] md:w-[40%] h-[40%] bg-orange-600/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none"></div>
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-      <div className="z-10 w-full max-w-6xl flex flex-col gap-6 flex-1 relative">
-        <OMRGenerator />
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      setIsDarkMode(true);
+    } else if (saved === 'light') {
+      setIsDarkMode(false);
+    } else {
+      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  return (
+    <div className="min-h-screen flex justify-center transition-colors duration-300 bg-[#faf8f5] dark:bg-[#2a080c] text-[#3b1a1a] dark:text-[#f3e5d8] font-sans">
+      <div className="w-full max-w-md mx-auto relative overflow-x-hidden shadow-2xl flex flex-col min-h-screen">
+        <OMRGenerator isDarkMode={isDarkMode} toggleTheme={() => setIsDarkMode(!isDarkMode)} />
       </div>
     </div>
   );

@@ -15,8 +15,8 @@ export default defineConfig(() => {
           name: 'Mutu OMR',
           short_name: 'Mutu OMR',
           description: 'Digital OMR Sheet Generator',
-          theme_color: '#4E070C',
-          background_color: '#3d0c02',
+          theme_color: '#2a080c',
+          background_color: '#1a0505',
           display: 'standalone',
           icons: [
             {
